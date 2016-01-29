@@ -7,9 +7,11 @@ import java.util.Set;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -58,10 +60,16 @@ public class EmployeesController {
 	}
 
 	// load up original view on the first call
-	@RequestMapping(path = "StartEmployeesData.do", params = "start", method = RequestMethod.GET)
+	
+	
+
+	
+	@RequestMapping(path = "GetEmployeesData.do", params = "start", method = RequestMethod.GET)
 
 	public ModelAndView init(@ModelAttribute("sessionEmployee") Employee localSessionEmployee) {
 
+		System.out.println("in start");
+		
 		ModelAndView mv = new ModelAndView();
 
 		System.out.println(data.Employee.instcount);
@@ -72,36 +80,59 @@ public class EmployeesController {
 
 		mv.addObject("sessionEmployee", employeeDao.getEmployee((1)));
 
-		return mv;
+		
 
+		
+//		Employee emp = new Employee ();
+//		mv.addObject("employee", emp);
+		
+		return mv;
+		
+		
 	}
 
 	
-//	@RequestMapping(path="ValidateEmployeesData.do",
-//			method=RequestMethod.POST)
-//			public ModelAndView addEmployee() {
-//			// Prime the model with an empty book object so that
-//			// the form can populate it with values
-//			Employee emp = new Employee("John", "Doe");
-//			return new ModelAndView("select.jsp", "employee", emp);
-//			
-//			}
+	
+	// create blank employee
+	
+	
+	@RequestMapping(path="ValidateEmployeesData.do",
+			method=RequestMethod.POST)
+			public ModelAndView addEmployee(@Valid Employee emp, Errors errors) {
+			// Prime the model with an empty employee object so that
+			// the form can populate it with values
+		
+		    if (errors.getErrorCount() != 0) {
+		    	
+		    	System.out.println(errors.getAllErrors().get(0));
+		    	System.out.println(" in Error");
+			    return new ModelAndView("select.jsp");
+			}
+			
+			
+			ModelAndView mv = new ModelAndView();
+			
+			employeeDao.addEmployee(emp);
+			
+			
+			System.out.println(emp);
+			
+			mv.setViewName("select.jsp");
+
+			mv.addObject("tableChoice", "three");
+
+			mv.addObject("sessionEmployee", employeeDao.getEmployee(data.Employee.instcount - 1));
+
+			
+			
+			
+			return mv;
+			
+			}
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	  
 	
 	// get employee by number
 
@@ -345,27 +376,7 @@ public class EmployeesController {
 
 	// ----------------------------------------------------------------------------------------
 
-	// create new object of employee
-
-	@RequestMapping(value = "GetEmployeesData.do", method = RequestMethod.POST)
-	public ModelAndView addEmployee(@RequestParam("fname") String fname, @RequestParam("lname") String lname)
-	{
-
-		Employee emp = new Employee(fname, lname);
-
-		ModelAndView mv = new ModelAndView();
-
-		employeeDao.addEmployee(emp);
-
-		mv.setViewName("select.jsp");
-
-		mv.addObject("tableChoice", "three");
-
-		mv.addObject("sessionEmployee", employeeDao.getEmployee(data.Employee.instcount - 1));
-
-		return mv;
-
-	}
+	
 
 	// delete object of employee
 

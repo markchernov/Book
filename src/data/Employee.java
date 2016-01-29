@@ -1,13 +1,16 @@
 package data;
 
+import javax.validation.constraints.Size;
+
 public class Employee {
 
 	
 	public static int instcount = 1;
 	
 	private int number;
-	
+	@Size(min=2, max=100)
 	private String fname;
+	@Size(min=2, max=100)
 	private String lname;
 
 	private Company company;
@@ -17,6 +20,7 @@ public class Employee {
 	// noarg constructor
 	public Employee() {
 		
+		this(" "," ");
 		
 	};
 

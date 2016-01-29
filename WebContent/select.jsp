@@ -87,47 +87,21 @@
 
 
 <h3>Add Employee</h3>
-	   <form:form action="GetEmployeesData.do" modelAttribute="employee">
+
+
+        <form:form action="ValidateEmployeesData.do" modelAttribute="employee">
 		Create Employee: 
 		<input type="text" name="fname" value="John" />
+		
 		<input type="text" name="lname" value="Doe" />
-		<input type="text" name="company" value="n/a" />
-		<input type="text" name="contact" value="n/a" />
+	
 		<input type="submit" value="Add Employee" />
 		</form:form>
 
 
 		
-		<form:form action="GetEmployeesData.do" modelAttribute="employee">
-			<table>
-				<tr>
-					<td>ISBN:</td>
-					<td><form:input path="fname" /></td>
-					<td><form:errors path="fname" /></td>
-				</tr>
-				<tr>
-					<td>Title:</td>
-					<td><form:input path="lname" /></td>
-					<td><form:errors path="lname" /></td>
-				</tr>
-				
-				
-				
-				
-				
-				
-				
-				
-				
-			</table>
-			<input type="submit" value="Add Book" />
-		    </form:form>
 		
-
-
-
-
-
+	 
 
 		<br>
 
