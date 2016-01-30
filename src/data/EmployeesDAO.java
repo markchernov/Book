@@ -1,5 +1,6 @@
 package data;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Set;
 
@@ -28,5 +29,7 @@ public interface EmployeesDAO {
 	// Delete
 
 	void deleteEmployee(Employee employee);
+
+	void saveAll(Set<Employee> set) throws FileNotFoundException;
 
 }

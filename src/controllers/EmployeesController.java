@@ -1,5 +1,6 @@
 package controllers;
 
+import java.io.FileNotFoundException;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -73,6 +74,9 @@ public class EmployeesController {
 		System.out.println(employeeDao.getAllEmployees().size());
 
 		mv.setViewName("select.jsp");
+		
+		mv.addObject("arraySize", employeeDao.getAllEmployees().size());
+		
 
 		mv.addObject("sessionEmployee", employeeDao.getEmployee((1)));
 
@@ -116,7 +120,7 @@ public class EmployeesController {
 			mv.addObject("sessionEmployee", employeeDao.getEmployee(data.Employee.instcount - 1));
 
 			
-			
+			mv.addObject("arraySize", employeeDao.getAllEmployees().size());
 			
 			return mv;
 			
@@ -142,7 +146,7 @@ public class EmployeesController {
 
 			mv.addObject("sessionEmployee", employeeDao.getEmployee(num)); // updates
 																			// the
-																			// session
+			mv.addObject("arraySize", employeeDao.getAllEmployees().size());																// session
 
 			return mv;
 		}
@@ -178,7 +182,7 @@ public class EmployeesController {
 			mv.addObject("sessionEmployee", employeeDao.getEmployee(localSessionEmployee.getNumber()+1)); // updates
 																			// the
 																			// session
-
+			mv.addObject("arraySize", employeeDao.getAllEmployees().size());
 			return mv;
 		}
 
@@ -213,7 +217,7 @@ public class EmployeesController {
 			mv.addObject("sessionEmployee", employeeDao.getEmployee(localSessionEmployee.getNumber()- 1)); // updates
 																			// the
 																			// session
-
+			mv.addObject("arraySize", employeeDao.getAllEmployees().size());
 			return mv;
 		}
 
@@ -245,7 +249,7 @@ public class EmployeesController {
 		mv.setViewName("select.jsp");
 
 		mv.addObject("sessionArray", localSessionSet);
-
+		mv.addObject("arraySize", employeeDao.getAllEmployees().size());
 		return mv;
 
 	}
@@ -264,7 +268,7 @@ public class EmployeesController {
 		localSessionSet.clear();
 
 		mv.addObject("sessionSet", localSessionSet);
-
+		mv.addObject("arraySize", employeeDao.getAllEmployees().size());
 		return mv;
 	}
 
@@ -276,7 +280,7 @@ public class EmployeesController {
 		ModelAndView mv = new ModelAndView();
 
 		mv.setViewName("select.jsp");
-
+		mv.addObject("arraySize", employeeDao.getAllEmployees().size());
 		mv.addObject("tableChoice", "two");
 
 		mv.addObject("sessionSet", localSessionSet);
@@ -299,6 +303,7 @@ public class EmployeesController {
 		mv.setViewName("select.jsp");
 		mv.addObject("tableChoice", "one"); // additional attribute to send to
 		// display to call the right table
+		mv.addObject("arraySize", employeeDao.getAllEmployees().size());
 		mv.addObject("sessionSearchSet", localSessionSearchSet);
 
 		return mv;
@@ -316,7 +321,7 @@ public class EmployeesController {
 		localSessionSearchSet = employeeDao.getAllEmployeesByLastName(lname);
 
 		mv.setViewName("select.jsp");
-
+		mv.addObject("arraySize", employeeDao.getAllEmployees().size());
 		mv.addObject("tableChoice", "one"); // additional attribute to send to
 		// display to call the right table
 		mv.addObject("sessionSearchSet", localSessionSearchSet);
@@ -335,7 +340,7 @@ public class EmployeesController {
 		localSessionSearchSet = employeeDao.getAllEmployeeByState(state);
 
 		mv.setViewName("select.jsp");
-
+		mv.addObject("arraySize", employeeDao.getAllEmployees().size());
 		mv.addObject("tableChoice", "one"); // additional attribute to send to
 		// display to call the right table
 		mv.addObject("sessionSearchSet", localSessionSearchSet);
@@ -357,7 +362,7 @@ public class EmployeesController {
 		localSessionSet.addAll(localSessionSearchSet);
 
 		mv.setViewName("select.jsp");
-
+		mv.addObject("arraySize", employeeDao.getAllEmployees().size());
 		mv.addObject("sessionSet", localSessionSet);
 
 		return mv;
@@ -378,6 +383,8 @@ public class EmployeesController {
 		employeeDao.deleteEmployee(employeeDao.getEmployee(num));
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("select.jsp");
+		
+		mv.addObject("arraySize", employeeDao.getAllEmployees().size());
 		return mv;
 	}
 
@@ -397,6 +404,7 @@ public class EmployeesController {
 			mv.setViewName("select.jsp");
 
 			mv.addObject("tableChoice", "four");
+			mv.addObject("arraySize", employeeDao.getAllEmployees().size());
 
 			mv.addObject("sessionEmployee", employeeDao.getEmployee(num)); // updates
 			// the
@@ -409,7 +417,7 @@ public class EmployeesController {
 
 			mv.setViewName("select.jsp");
 
-			mv.addObject("tableChoice", "three");
+			mv.addObject("tableChoice", "four");
 
 			mv.addObject("error", "Employee not Found");
 			return mv;
@@ -455,7 +463,7 @@ public class EmployeesController {
 			mv.addObject("sessionEmployee", localSessionEmployee); // updates
 																				// the
 																				// session
-
+			mv.addObject("arraySize", employeeDao.getAllEmployees().size());
 			return mv;
 		}
 
@@ -471,4 +479,21 @@ public class EmployeesController {
 
 	}
 
+	// delete object of employee
+
+		@RequestMapping(path = "GetEmployeesData.do", params = "send", method = RequestMethod.GET)
+
+		public ModelAndView sendEmployees(@ModelAttribute("sessionSet") Set<Employee> localSessionSet) throws FileNotFoundException {
+
+			employeeDao.saveAll(localSessionSet);
+			
+			ModelAndView mv = new ModelAndView();
+			mv.setViewName("select.jsp");
+			
+			mv.addObject("arraySize", employeeDao.getAllEmployees().size());
+			return mv;
+		}
+	
+	
+	
 }

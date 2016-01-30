@@ -1,8 +1,13 @@
 package data;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -17,6 +22,8 @@ import org.springframework.context.ApplicationContext;
 public class EmployeesFileDAO implements EmployeesDAO {
 
 	private static final String filename = "WEB-INF/us-500.csv";
+	
+	private static final String filename2 = "WEB-INF/test.txt";
 
 	private List<Employee> employeeList = new ArrayList<>();
 
@@ -80,6 +87,63 @@ public class EmployeesFileDAO implements EmployeesDAO {
 
 	}
 
+	
+	
+	
+	
+	// save employees
+	
+	@Override
+	public void saveAll(Set<Employee> set) throws FileNotFoundException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+	
+	
+//	    public void saveAll(Set<Employee> set) throws FileNotFoundException {
+//	    	
+////	    		
+////	    	
+////	    PrintWriter pw = new PrintWriter(new FileOutputStream(filename2));
+////	    
+////	    InputStream os = ac.getResource(filename2);
+//	    
+//	    try (OutputStream os = ac.getResource(filename2).getOutputStream();
+//				BufferedWriter buf = new BufferedWriter(new FileOutputStream(os));) {
+//	    	
+//			String line = buf.newLine();
+//	    
+//			PrintWriter pw = new PrintWriter(filename2);
+//	    
+//	        for (Employee emp : set)
+//	        pw.println(emp.toString());
+//	        pw.close();
+//	        
+//	    }   
+//	     catch (Exception e) {
+//			System.err.println(e);
+//		} 
+//	        
+//	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	// ---------------------methods-----------------------------//
 
 	// overload
@@ -173,6 +237,11 @@ public class EmployeesFileDAO implements EmployeesDAO {
 		employeeList.remove(emp);
 	}
 
+
+
+
+
+	
 	
 
 }

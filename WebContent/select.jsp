@@ -21,8 +21,11 @@
 	<h2>Select Employee Menu</h2>
 
 
+    <h3> Total number of employees is: ${arraySize} </h3>
+
+
 	<form action="GetEmployeesData.do" method="GET">
-		Search Employee by Number: <input type="text" name="number" /> <input
+		Search Employee by Number: <input type="text" name="number" value="${sessionEmployee.number}" /> <input
 			type="submit" value="Get Employee Data" />
 	</form>
 
@@ -84,38 +87,27 @@
 
 	<br>
 
+	<form action="ValidateEmployeesData.do" method="POST">
+		Create Employee: <input type="text" name="fname" value="John" /> <input
+			type="text" name="lname" value="Doe" /> <input type="submit"
+			value="Add Employee" />
+	</form>
 
 
-<h3>Add Employee</h3>
-
-
-        <form action="ValidateEmployeesData.do" method="POST">
-		Create Employee: 
-		<input type="text" name="fname" value="John" />
-		
-		<input type="text" name="lname" value="Doe" />
-	   
-		<input type="submit" value="Add Employee" />
-		</form>
-
-
-		
-		
-
-		<br>
+	<br>
 
 
 
-		<form action="UpdateEmployeesData.do" method="GET" >
-		
-		
-		
-		
-			Update Employee by Number: <input type="text" name="number" /> 
-			<input type="submit" value="Update Employee Data" />
-	    </form>
+	<form action="UpdateEmployeesData.do" method="GET">
 
-	      <br>
+
+
+
+		Update Employee by Number: <input type="text" name="number" /> <input
+			type="submit" value="Update Employee Data" />
+	</form>
+
+	<br>
 
 
 
@@ -345,10 +337,13 @@
 		<br>
 
 
+  <!--   "mailto:${thisEmployee.contact.email}">  -->
 
 
+             
 
-		<form action="mailto:${thisEmployee.contact.email}">
+
+		    <form action="GetEmployeesData.do" method="GET" >
 			Send Email : <input type="submit" name="send" value="SEND EMAIL" />
 
 
