@@ -1,8 +1,10 @@
 package data;
 
+import java.io.Serializable;
+
 import javax.validation.constraints.Size;
 
-public class Employee {
+public class Employee implements Serializable{
 
 	
 	public static int instcount = 1;

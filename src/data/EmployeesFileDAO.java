@@ -2,12 +2,17 @@ package data;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream.GetField;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -18,6 +23,7 @@ import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.core.io.Resource;
 
 public class EmployeesFileDAO implements EmployeesDAO {
 
@@ -93,40 +99,32 @@ public class EmployeesFileDAO implements EmployeesDAO {
 	
 	// save employees
 	
-	@Override
-	public void saveAll(Set<Employee> set) throws FileNotFoundException {
-		// TODO Auto-generated method stub
-		
-	}
 
 	
 	
-	
-//	    public void saveAll(Set<Employee> set) throws FileNotFoundException {
-//	    	
-////	    		
-////	    	
-////	    PrintWriter pw = new PrintWriter(new FileOutputStream(filename2));
-////	    
-////	    InputStream os = ac.getResource(filename2);
-//	    
-//	    try (OutputStream os = ac.getResource(filename2).getOutputStream();
-//				BufferedWriter buf = new BufferedWriter(new FileOutputStream(os));) {
-//	    	
-//			String line = buf.newLine();
-//	    
-//			PrintWriter pw = new PrintWriter(filename2);
-//	    
-//	        for (Employee emp : set)
-//	        pw.println(emp.toString());
-//	        pw.close();
-//	        
-//	    }   
-//	     catch (Exception e) {
-//			System.err.println(e);
-//		} 
-//	        
-//	}
+	    public void saveAll(Set<Employee> set) throws FileNotFoundException {
+	    	
+    
+	    try {
+	    	
+	    	
+	    	
+	    	FileOutputStream fo = new FileOutputStream(filename2);
+            ObjectOutputStream out = new ObjectOutputStream(fo);
+	        
+	        for (Employee emp : set) {
+	        	out.writeObject(emp); 
+	        	}
+		    out.close();
+	        
+	        
+	        
+	    }   
+	     catch (Exception e) {
+			System.err.println(e);
+		} 
+	        
+	}
 	
 	
 	
