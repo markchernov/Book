@@ -89,25 +89,28 @@
 <h3>Add Employee</h3>
 
 
-        <form:form action="ValidateEmployeesData.do" modelAttribute="employee">
+        <form action="ValidateEmployeesData.do" method="POST">
 		Create Employee: 
 		<input type="text" name="fname" value="John" />
 		
 		<input type="text" name="lname" value="Doe" />
-	
+	   
 		<input type="submit" value="Add Employee" />
-		</form:form>
+		</form>
 
 
 		
 		
-	 
 
 		<br>
 
 
 
 		<form action="UpdateEmployeesData.do" method="GET" >
+		
+		
+		
+		
 			Update Employee by Number: <input type="text" name="number" /> 
 			<input type="submit" value="Update Employee Data" />
 	    </form>

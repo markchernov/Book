@@ -25,7 +25,7 @@ import data.EmployeesDAO;
 //  set attributes for session: current employee object, array of chosen employees, counter for prev/next button and array for temporary search results
 
 @Controller
-@SessionAttributes({ "sessionEmployee", "sessionSet", "sessionCounter", "sessionSearchSet" })
+@SessionAttributes({ "sessionEmployee", "sessionSet", "sessionSearchSet" })
 
 public class EmployeesController {
 	@Autowired
@@ -47,11 +47,7 @@ public class EmployeesController {
 		return sessionSet;
 	}
 
-	@ModelAttribute("sessionCounter")
-	public int initSessionCounter() {
-		int sessionCounter = 1;
-		return sessionCounter;
-	}
+	
 
 	@ModelAttribute("sessionSearchSet")
 	public Set<Employee> initSessionSearchArray() {
@@ -81,10 +77,6 @@ public class EmployeesController {
 		mv.addObject("sessionEmployee", employeeDao.getEmployee((1)));
 
 		
-
-		
-//		Employee emp = new Employee ();
-//		mv.addObject("employee", emp);
 		
 		return mv;
 		
@@ -172,8 +164,7 @@ public class EmployeesController {
 
 	@RequestMapping(path = "GetEmployeesData.do", params = "next", method = RequestMethod.GET)
 
-	public ModelAndView getNextEmployee(@ModelAttribute("sessionEmployee") Employee localSessionEmployee,
-			@ModelAttribute("sessionCounter") int localSessionCounter) {
+	public ModelAndView getNextEmployee(@ModelAttribute("sessionEmployee") Employee localSessionEmployee) {
 
 		System.out.println(" in Next Emp");
 		ModelAndView mv = new ModelAndView();
@@ -208,8 +199,7 @@ public class EmployeesController {
 
 	@RequestMapping(path = "GetEmployeesData.do", params = "prev", method = RequestMethod.GET)
 
-	public ModelAndView getPrevEmployee(@ModelAttribute("sessionEmployee") Employee localSessionEmployee,
-			@ModelAttribute("sessionCounter") int localSessionCounter) {
+	public ModelAndView getPrevEmployee(@ModelAttribute("sessionEmployee") Employee localSessionEmployee) {
 
 		System.out.println(" in Prev Emp");
 		ModelAndView mv = new ModelAndView();
