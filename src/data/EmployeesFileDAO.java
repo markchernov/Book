@@ -109,7 +109,7 @@ public class EmployeesFileDAO implements EmployeesDAO {
 	    	
 	    	
 	    	
-	    	FileOutputStream fo = new FileOutputStream(filename2);
+	    	FileOutputStream fo = new FileOutputStream(ac.getResource(filename2).getFilename());
             ObjectOutputStream out = new ObjectOutputStream(fo);
 	        
 	        for (Employee emp : set) {

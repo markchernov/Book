@@ -157,7 +157,7 @@ public class EmployeesController {
 
 			mv.addObject("tableChoice", "three");
 
-			mv.addObject("error", "Employee not Found");
+			mv.addObject("error", "Employee Not Found");
 		}
 
 		return mv;
@@ -247,7 +247,7 @@ public class EmployeesController {
 		localSessionSet.add(localSessionEmployee);
 
 		mv.setViewName("select.jsp");
-
+		mv.addObject("tableChoice", "three");
 		mv.addObject("sessionArray", localSessionSet);
 		mv.addObject("arraySize", employeeDao.getAllEmployees().size());
 		return mv;
@@ -385,6 +385,16 @@ public class EmployeesController {
 		mv.setViewName("select.jsp");
 		
 		mv.addObject("arraySize", employeeDao.getAllEmployees().size());
+		
+	
+
+		mv.addObject("tableChoice", "three");
+
+		mv.addObject("error", "Employee Deleted");
+		
+		
+		
+		
 		return mv;
 	}
 

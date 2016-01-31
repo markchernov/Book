@@ -14,11 +14,11 @@ body {
 }
 
 #myImage  {
-	
+	margin: 0 auto;
 	max-width: 50%;
 	max-height: 50%;
 	
-	margin: 0 auto;
+	
 }
 
 
@@ -30,7 +30,7 @@ body {
 }
 
 .mycontainer {
-	
+	background-color: #b39ddb;
 	 margin-left: auto; 
 	 margin-right: auto; 
 }
