@@ -33,6 +33,9 @@
 
 <body>
 
+
+
+
 	<nav>
 		<div class="nav-wrapper deep-purple">
 			<a href="#" class="brand-logo center">Contact Book </a>
@@ -45,7 +48,7 @@
 	</nav>
 
 
-
+<div class="maincontainer">
 
 	<div class="choice">
 
@@ -66,7 +69,7 @@
 
 						<li>
 							<div class="collapsible-header">
-								<i class="material-icons">filter_drama</i>Select Employee
+								<i class="material-icons">filter_drama</i>Select
 							</div>
 
 
@@ -208,7 +211,7 @@
 						<li>
 							<div class="collapsible-header">
 								<i class="material-icons">filter_drama</i>Create/Update/Delete
-								Employee
+
 							</div>
 
 
@@ -274,15 +277,16 @@
 
 
 
-									<input type="text" name="number" value="1" /> <!-- <input
+									<input type="text" name="number" value="1" />
+									<!-- <input
 										type="submit" value="Update Employee #" /> -->
-										
-										<button class="btn waves-effect waves-light  deep-purple"
-							             type="submit">
-							             Update Employee BY NUMBER <i class="material-icons right">launch</i>
-						                </button>
-										
-										
+
+									<button class="btn waves-effect waves-light  deep-purple"
+										type="submit">
+										Update Employee BY NUMBER <i class="material-icons right">launch</i>
+									</button>
+
+
 								</form>
 
 								<br>
@@ -318,7 +322,7 @@
 
 						<li>
 							<div class="collapsible-header">
-								<i class="material-icons">filter_drama</i>Search Employee
+								<i class="material-icons">filter_drama</i>Search
 							</div>
 
 
@@ -402,65 +406,66 @@
 
 	</div>
 
+	<div class="result">
 
-	<div class="row">
-		`
+		<div class="row">
+			`
 
-		<div class="mycontainer">
-
-
-			<div class="card-panel teal lighten-2">
+			<div class="mycontainer">
 
 
-
+				<div class="card-panel teal lighten-2">
 
 
 
-				<c:if test="${tableChoice=='three'}">
 
 
-					<c:choose>
-						<c:when test="${error == null}">
 
-							<h2>Current Employee:</h2>
+					<c:if test="${tableChoice=='three'}">
 
 
-							<table>
-								<thead>
-									<tr>
-										<th data-field="id">Employee ID</th>
-										<th data-field="name">First Name</th>
-										<th data-field="price">Last Name</th>
-										<th data-field="price">Home Phone</th>
-										<th data-field="price">Cell Phone</th>
-										<th data-field="price">Email</th>
-										<th data-field="price">Company</th>
-										<th data-field="price">Address</th>
-										<th data-field="price">City</th>
-										<th data-field="price">County</th>
-										<th data-field="price">State</th>
-										<th data-field="price">Zip</th>
+						<c:choose>
+							<c:when test="${error == null}">
 
-									</tr>
-								</thead>
+								<h2>Current Employee:</h2>
 
-								<tbody>
-									<tr>
-										<td>${sessionEmployee.number}</td>
-										<td>${sessionEmployee.fname}</td>
-										<td>${sessionEmployee.lname}</td>
-										<td>${sessionEmployee.contact.homePhone}</td>
-										<td>${sessionEmployee.contact.cellPhone}</td>
-										<td>${sessionEmployee.contact.email}</td>
-										<td>${sessionEmployee.company.cName}</td>
-										<td>${sessionEmployee.company.address}</td>
-										<td>${sessionEmployee.company.city}</td>
-										<td>${sessionEmployee.company.county}</td>
-										<td>${sessionEmployee.company.state}</td>
-										<td>${sessionEmployee.company.zip}</td>
 
-									</tr>
-									<%-- <tr>
+								<table>
+									<thead>
+										<tr>
+											<th data-field="id">Employee ID</th>
+											<th data-field="name">First Name</th>
+											<th data-field="price">Last Name</th>
+											<th data-field="price">Home Phone</th>
+											<th data-field="price">Cell Phone</th>
+											<th data-field="price">Email</th>
+											<th data-field="price">Company</th>
+											<th data-field="price">Address</th>
+											<th data-field="price">City</th>
+											<th data-field="price">County</th>
+											<th data-field="price">State</th>
+											<th data-field="price">Zip</th>
+
+										</tr>
+									</thead>
+
+									<tbody>
+										<tr>
+											<td>${sessionEmployee.number}</td>
+											<td>${sessionEmployee.fname}</td>
+											<td>${sessionEmployee.lname}</td>
+											<td>${sessionEmployee.contact.homePhone}</td>
+											<td>${sessionEmployee.contact.cellPhone}</td>
+											<td>${sessionEmployee.contact.email}</td>
+											<td>${sessionEmployee.company.cName}</td>
+											<td>${sessionEmployee.company.address}</td>
+											<td>${sessionEmployee.company.city}</td>
+											<td>${sessionEmployee.company.county}</td>
+											<td>${sessionEmployee.company.state}</td>
+											<td>${sessionEmployee.company.zip}</td>
+
+										</tr>
+										<%-- <tr>
 										<td><iframe width="500px" height="300px"
 										src="https://maps.google.com/maps?q=${sessionEmployee.company.city}&hl=es;z=14&amp;output=embed"></iframe></td>
 										
@@ -469,75 +474,142 @@
 										<td><iframe width="500px" height="300px"
 										src="${sessionEmployee.company.web}"></td>
 									</tr> --%>
-								</tbody>
+									</tbody>
+								</table>
+
+
+
+
+
+
+								<ul>
+
+
+
+
+									<li><iframe width="500px" height="300px"
+											src="https://maps.google.com/maps?q=${sessionEmployee.company.city}&hl=es;z=14&amp;output=embed">
+										</iframe> <iframe width="500px" height="300px"
+											src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSqVbwe1kAqPVjlx3tu9GLkQbeOZroWRNQbY4TW3Be8ulsLQNWG"></iframe>
+									</li>
+
+
+								</ul>
+
+
+
+
+
+
+							</c:when>
+
+
+							<c:when test="${error != null}">
+
+								<h2>${error}</h2>
+
+
+							</c:when>
+						</c:choose>
+
+
+
+
+
+
+					</c:if>
+
+
+
+
+
+
+
+
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+
+
+		<div class="row">
+			`
+
+			<div class="mycontainer">
+
+
+				<div class="card-panel teal lighten-2">
+
+
+
+
+
+
+
+
+
+					<c:if test="${tableChoice=='one'}">
+
+						<h2>Selected by Name/State Employees:</h2>
+
+
+
+						<c:forEach var="thisEmployee" items="${sessionSearchSet}">
+
+
+
+
+
+
+
+
+
+
+
+							<table border="1">
+								<tr>
+									<th>Number</th>
+									<th>First Name</th>
+									<th>Last Name</th>
+									<th>Company</th>
+
+								</tr>
+								<tr>
+
+
+
+									<td>${thisEmployee.number}</td>
+									<td>${thisEmployee.fname}</td>
+									<td>${thisEmployee.lname}</td>
+									<td>${thisEmployee.company.cName}</td>
+
+								</tr>
 							</table>
 
 
+						</c:forEach>
+
+						<br>
+
+						<form action="GetEmployeesData.do" method="GET">
+							Add ALL Employees to Mailing List : <input type="submit"
+								name="addAll" value="ADD TO LIST" />
+						</form>
+
+
+
+					</c:if>
 
 
 
 
-							<ul>
-
-
-
-
-								<li><iframe width="500px" height="300px"
-										src="https://maps.google.com/maps?q=${sessionEmployee.company.city}&hl=es;z=14&amp;output=embed">
-									</iframe> <iframe width="500px" height="300px"
-										src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSqVbwe1kAqPVjlx3tu9GLkQbeOZroWRNQbY4TW3Be8ulsLQNWG"></iframe>
-								</li>
-
-
-							</ul>
-
-
-
-
-
-
-						</c:when>
-
-
-						<c:when test="${error != null}">
-
-							<h2>${error}</h2>
-
-
-						</c:when>
-					</c:choose>
-
-
-
-
-
-
-				</c:if>
-
-
-
-
-
-
-
-
+				</div>
 			</div>
 		</div>
-	</div>
-
-
-
-
-
-
-
-	<div class="row">
-		`
-
-		<div class="mycontainer">
-
-
-			<div class="card-panel teal lighten-2">
 
 
 
@@ -546,16 +618,26 @@
 
 
 
+		<div class="row">
+			`
 
-				<c:if test="${tableChoice=='one'}">
-
-					<h2>Selected by Name/State Employees:</h2>
-
-
-
-					<c:forEach var="thisEmployee" items="${sessionSearchSet}">
+			<div class="mycontainer">
 
 
+				<div class="card-panel teal lighten-2">
+
+
+
+
+
+
+					<c:if test="${tableChoice=='two'}">
+
+
+
+						<h2>Employees in Mailing List:</h2>
+
+						<c:forEach var="thisEmployee" items="${sessionSet}">
 
 
 
@@ -565,245 +647,172 @@
 
 
 
-						<table border="1">
-							<tr>
-								<th>Number</th>
-								<th>First Name</th>
-								<th>Last Name</th>
-								<th>Company</th>
-
-							</tr>
-							<tr>
 
 
+							<table border="1">
+								<tr>
+									<th>Number</th>
+									<th>First Name</th>
+									<th>Last Name</th>
+									<th>Company</th>
 
-								<td>${thisEmployee.number}</td>
-								<td>${thisEmployee.fname}</td>
-								<td>${thisEmployee.lname}</td>
-								<td>${thisEmployee.company.cName}</td>
-
-							</tr>
-						</table>
-
-
-					</c:forEach>
-
-					<br>
-
-					<form action="GetEmployeesData.do" method="GET">
-						Add ALL Employees to Mailing List : <input type="submit"
-							name="addAll" value="ADD TO LIST" />
-					</form>
+								</tr>
+								<tr>
 
 
 
-				</c:if>
+									<td>${thisEmployee.number}</td>
+									<td>${thisEmployee.fname}</td>
+									<td>${thisEmployee.lname}</td>
+									<td>${thisEmployee.company.cName}</td>
+
+								</tr>
+							</table>
+
+
+						</c:forEach>
 
 
 
 
+						<br>
+
+
+						<!--   "mailto:${thisEmployee.contact.email}">  -->
+
+
+
+
+
+						<form action="GetEmployeesData.do" method="GET">
+							Send Email : <input type="submit" name="send" value="SEND EMAIL" />
+
+
+						</form>
+
+						<br>
+
+					</c:if>
+
+
+
+				</div>
 			</div>
 		</div>
-	</div>
 
 
 
 
+		<div class="row">
+			`
 
+			<div class="mycontainer">
 
 
+				<div class="card-panel teal lighten-2">
 
-	<div class="row">
-		`
 
-		<div class="mycontainer">
 
 
-			<div class="card-panel teal lighten-2">
 
 
+					<c:if test="${tableChoice=='four'}">
 
 
+						<c:choose>
+							<c:when test="${error == null}">
 
+								<h2>Current Employee:</h2>
 
-				<c:if test="${tableChoice=='two'}">
+								<ul>
+									<li>Employee ID: ${sessionEmployee.number}</li>
+									<li>Employee First Name: ${sessionEmployee.fname}</li>
+									<li>Employee Last Name: ${sessionEmployee.lname}</li>
 
+								</ul>
 
 
-					<h2>Employees in Mailing List:</h2>
 
-					<c:forEach var="thisEmployee" items="${sessionSet}">
+								<ul>
 
 
+									<li>Employee Home Phone:
+										${sessionEmployee.contact.homePhone}</li>
+									<li>Employee Cell Phone:
+										${sessionEmployee.contact.cellPhone}</li>
+									<li>Employee Email: ${sessionEmployee.contact.email}</li>
 
 
+								</ul>
 
 
 
+								<ul>
 
 
 
 
-						<table border="1">
-							<tr>
-								<th>Number</th>
-								<th>First Name</th>
-								<th>Last Name</th>
-								<th>Company</th>
+									<li>Company Name: ${sessionEmployee.company.cName}</li>
+									<li>Company Address: ${sessionEmployee.company.address}</li>
+									<li>Company City: ${sessionEmployee.company.city}</li>
+									<li>Company County: ${sessionEmployee.company.county}</li>
+									<li>Company State: ${sessionEmployee.company.state}</li>
+									<li>Company Zip: ${sessionEmployee.company.zip}</li>
+									<li><iframe width="500px" height="300px"
+											src="https://maps.google.com/maps?q=${sessionEmployee.company.city}&hl=es;z=14&amp;output=embed"></iframe></li>
+									<li><iframe width="500px" height="300px"
+											src="${sessionEmployee.company }"></iframe></li>
 
-							</tr>
-							<tr>
 
+								</ul>
 
 
-								<td>${thisEmployee.number}</td>
-								<td>${thisEmployee.fname}</td>
-								<td>${thisEmployee.lname}</td>
-								<td>${thisEmployee.company.cName}</td>
 
-							</tr>
-						</table>
 
+								<br>
 
-					</c:forEach>
 
+								<form action="UpdateEmployeesData.do" method="POST">
+									<h2>Update Employee:</h2>
 
+									First Name:<input type="text" name="fname"
+										value="${sessionEmployee.fname}" /> Last Name:<input
+										type="text" name="lname" value="${sessionEmployee.lname}" />
+									Home Phone:<input type="text" name="homephone"
+										value="${sessionEmployee.contact.homePhone}" /> Cell Phone:<input
+										type="text" name="cellphone"
+										value="${sessionEmployee.contact.cellPhone}" /> Email:<input
+										type="text" name="email"
+										value="${sessionEmployee.contact.email}" /> Company Name:<input
+										type="text" name="cname"
+										value="${sessionEmployee.company.cName}" /> Company Address:<input
+										type="text" name="address"
+										value="${sessionEmployee.company.address}" /> Company City:<input
+										type="text" name="city"
+										value="${sessionEmployee.company.city}" /> Company County:<input
+										type="text" name="county"
+										value="${sessionEmployee.company.county}" /> Company State:<input
+										type="text" name="state"
+										value="${sessionEmployee.company.state}" /> Company Zip:<input
+										type="text" name="zip" value="${sessionEmployee.company.zip}" />
+									Company Web:<input type="text" name="web"
+										value="${sessionEmployee.company.web}" /> <input
+										type="submit" value="Update Employee" />
+								</form>
 
+								<br>
 
-					<br>
 
 
-					<!--   "mailto:${thisEmployee.contact.email}">  -->
 
 
 
+							</c:when>
+						</c:choose>
+					</c:if>
 
 
-					<form action="GetEmployeesData.do" method="GET">
-						Send Email : <input type="submit" name="send" value="SEND EMAIL" />
-
-
-					</form>
-
-					<br>
-
-				</c:if>
-
-
-
-			</div>
-		</div>
-	</div>
-
-
-
-
-	<div class="row">
-		`
-
-		<div class="mycontainer">
-
-
-			<div class="card-panel teal lighten-2">
-
-
-
-
-
-
-				<c:if test="${tableChoice=='four'}">
-
-
-					<c:choose>
-						<c:when test="${error == null}">
-
-							<h2>Current Employee:</h2>
-
-							<ul>
-								<li>Employee ID: ${sessionEmployee.number}</li>
-								<li>Employee First Name: ${sessionEmployee.fname}</li>
-								<li>Employee Last Name: ${sessionEmployee.lname}</li>
-
-							</ul>
-
-
-
-							<ul>
-
-
-								<li>Employee Home Phone:
-									${sessionEmployee.contact.homePhone}</li>
-								<li>Employee Cell Phone:
-									${sessionEmployee.contact.cellPhone}</li>
-								<li>Employee Email: ${sessionEmployee.contact.email}</li>
-
-
-							</ul>
-
-
-
-							<ul>
-
-
-
-
-								<li>Company Name: ${sessionEmployee.company.cName}</li>
-								<li>Company Address: ${sessionEmployee.company.address}</li>
-								<li>Company City: ${sessionEmployee.company.city}</li>
-								<li>Company County: ${sessionEmployee.company.county}</li>
-								<li>Company State: ${sessionEmployee.company.state}</li>
-								<li>Company Zip: ${sessionEmployee.company.zip}</li>
-								<li><iframe width="500px" height="300px"
-										src="https://maps.google.com/maps?q=${sessionEmployee.company.city}&hl=es;z=14&amp;output=embed"></iframe></li>
-								<li><iframe width="500px" height="300px"
-										src="${sessionEmployee.company }"></iframe></li>
-
-
-							</ul>
-
-
-
-
-							<br>
-
-
-							<form action="UpdateEmployeesData.do" method="POST">
-								<h2>Update Employee:</h2>
-
-								First Name:<input type="text" name="fname"
-									value="${sessionEmployee.fname}" /> Last Name:<input
-									type="text" name="lname" value="${sessionEmployee.lname}" />
-								Home Phone:<input type="text" name="homephone"
-									value="${sessionEmployee.contact.homePhone}" /> Cell Phone:<input
-									type="text" name="cellphone"
-									value="${sessionEmployee.contact.cellPhone}" /> Email:<input
-									type="text" name="email"
-									value="${sessionEmployee.contact.email}" /> Company Name:<input
-									type="text" name="cname"
-									value="${sessionEmployee.company.cName}" /> Company Address:<input
-									type="text" name="address"
-									value="${sessionEmployee.company.address}" /> Company City:<input
-									type="text" name="city" value="${sessionEmployee.company.city}" />
-								Company County:<input type="text" name="county"
-									value="${sessionEmployee.company.county}" /> Company State:<input
-									type="text" name="state"
-									value="${sessionEmployee.company.state}" /> Company Zip:<input
-									type="text" name="zip" value="${sessionEmployee.company.zip}" />
-								Company Web:<input type="text" name="web"
-									value="${sessionEmployee.company.web}" /> <input type="submit"
-									value="Update Employee" />
-							</form>
-
-							<br>
-
-
-
-
-
-
-						</c:when>
-					</c:choose>
-				</c:if>
+				</div>
 
 			</div>
 		</div>
@@ -820,6 +829,6 @@
 
 
 
-
+</div>
 </body>
 </html>

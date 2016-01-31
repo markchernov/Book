@@ -1,7 +1,16 @@
 @CHARSET "ISO-8859-1";
 
 body {
+	
 	background-color: #b39ddb;
+	
+}
+
+.maincontainer{
+	
+	width: 100%;
+	
+	display: inline-flex;
 }
 
 #myImage  {
@@ -15,13 +24,15 @@ body {
 
 
 .row {
-	margin: 0 auto;
+	max-width: 100%; 
+	/* margin-left: auto; */
+	margin: 0 auto; 
 }
 
 .mycontainer {
 	
-	margin-left: auto;
-	margin-right: auto;
+	 margin-left: auto; 
+	 margin-right: auto; 
 }
 
 .card-content{
@@ -63,8 +74,8 @@ margin-left: auto;
 .choice{
 	
 	
-	width: 100%;
-	margin: 0 auto;
+	width: 20%;
+	margin:0 auto;
 	
 }
 
@@ -79,3 +90,11 @@ margin-left: auto;
 	
 }
 
+
+.result {
+	
+	width: 70%;
+	margin: 0 auto;
+	
+	
+}
