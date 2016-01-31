@@ -1,0 +1,81 @@
+@CHARSET "ISO-8859-1";
+
+body {
+	background-color: #b39ddb;
+}
+
+#myImage  {
+	
+	max-width: 50%;
+	max-height: 50%;
+	
+	margin: 0 auto;
+}
+
+
+
+.row {
+	margin: 0 auto;
+}
+
+.mycontainer {
+	
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.card-content{
+	
+	text-align: center;
+	
+}
+
+
+
+.card-action{
+	
+	
+	margin-left: auto;
+	margin-right: auto;
+	
+	
+}
+
+
+.formholder {
+	width:100%;
+margin-left: auto;
+	margin-right: auto;
+	
+
+	
+}
+
+.myForm 
+{
+	padding: 1em;
+	width:15%;
+	margin:0 auto;
+	
+}
+
+
+.choice{
+	
+	
+	width: 100%;
+	margin: 0 auto;
+	
+}
+
+
+
+.row1 {
+	
+	
+	width: 100%;
+	padding: 1em;
+		
+	
+}
+
