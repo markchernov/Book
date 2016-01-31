@@ -84,12 +84,12 @@
 
 
 
-									<h5>Total # of Employees: ${arraySize}</h5>
+									<h5>NUMBER OF EMPLOYEES: ${arraySize}</h5>
 
 
 									<form action="GetEmployeesData.do" method="GET">
 										<input type="text" name="number"
-											value="${sessionEmployee.number}" />
+											value="${sessionEmployee.number}" class="z-depth-3" />
 
 										<button class="btn waves-effect waves-light  deep-purple"
 											type="submit">
@@ -135,21 +135,12 @@
 
 
 
-									<form action="GetEmployeesData.do" method="GET">
-										<!-- <input type="submit" name="add"
-										value="ADD TO EMAIL LIST  " /> -->
-
-										<button class="btn waves-effect waves-light deep-purple"
-											type="submit" name="add">
-											ADD TO EMAIL <i class="material-icons right">launch</i>
-										</button>
-
-									</form>
 
 
 
 
-									<br>
+
+
 
 
 
@@ -427,10 +418,10 @@
 							<c:choose>
 								<c:when test="${error == null}">
 
-									<h2>Selected Employee:</h2>
+									<h2 class="z-depth-3">SELECTED EMPLOYEE:</h2>
 
 
-									<table>
+									<table class="striped" class="z-depth-3">
 										<thead>
 											<tr>
 												<th data-field="id">Employee ID</th>
@@ -442,7 +433,7 @@
 												<th data-field="price">Company</th>
 												<th data-field="price">Address</th>
 												<th data-field="price">City</th>
-											<!-- 	<th data-field="price">County</th> -->
+												<!-- 	<th data-field="price">County</th> -->
 												<th data-field="price">State</th>
 												<th data-field="price">Zip</th>
 
@@ -460,7 +451,7 @@
 												<td>${sessionEmployee.company.cName}</td>
 												<td>${sessionEmployee.company.address}</td>
 												<td>${sessionEmployee.company.city}</td>
-											<%-- 	<td>${sessionEmployee.company.county}</td> --%>
+												<%-- 	<td>${sessionEmployee.company.county}</td> --%>
 												<td>${sessionEmployee.company.state}</td>
 												<td>${sessionEmployee.company.zip}</td>
 
@@ -488,6 +479,20 @@
 
 
 									</ul>
+
+
+									<form action="GetEmployeesData.do" method="GET">
+										<!-- <input type="submit" name="add"
+										value="ADD TO EMAIL LIST  " /> -->
+
+										<button class="btn waves-effect waves-light deep-purple"
+											type="submit" name="add">
+											ADD TO EMAIL <i class="material-icons right">launch</i>
+										</button>
+
+									</form>
+
+
 
 
 
@@ -547,50 +552,73 @@
 
 						<c:if test="${tableChoice=='one'}">
 
-							<h2>Employees Found:</h2>
+							<h2 class="z-depth-3">EMPLOYEES FOUND:</h2>
 
 
+							<table class="striped" class="z-depth-3">
 
-							<c:forEach var="thisEmployee" items="${sessionSearchSet}">
-
-
-
-
-
-
-
-
-
-
-
-								<table border="1">
+								<thead>
 									<tr>
-										<th>Number</th>
-										<th>First Name</th>
-										<th>Last Name</th>
-										<th>Company</th>
+										<th data-field="id">Number</th>
+										<th data-field="fn">First Name</th>
+										<th data-field="ln">Last Name</th>
+										<th data-field="co">Company</th>
+										<th data-field="ad">Address</th>
 
 									</tr>
-									<tr>
+
+								</thead>
 
 
 
-										<td>${thisEmployee.number}</td>
-										<td>${thisEmployee.fname}</td>
-										<td>${thisEmployee.lname}</td>
-										<td>${thisEmployee.company.cName}</td>
 
-									</tr>
-								</table>
+								<c:forEach var="thisEmployee" items="${sessionSearchSet}">
 
 
-							</c:forEach>
+
+
+
+
+
+
+
+
+
+
+
+									<tbody>
+										<tr>
+
+
+
+											<td>${thisEmployee.number}</td>
+											<td>${thisEmployee.fname}</td>
+											<td>${thisEmployee.lname}</td>
+											<td>${thisEmployee.company.cName}</td>
+											<td>${thisEmployee.company.address}</td>
+
+										</tr>
+
+									</tbody>
+
+
+
+
+								</c:forEach>
+
+							</table>
 
 							<br>
+
+
+
+
 
 							<form action="GetEmployeesData.do" method="GET">
 								<!-- Add to Mail List : <input type="submit"
 								name="addAll" value="ADD TO LIST" /> -->
+
+
 
 								<button class="btn waves-effect waves-light  deep-purple"
 									type="submit" name="addAll">
@@ -635,45 +663,56 @@
 
 
 
-							<h2>Employees in Mailing List:</h2>
-
-							<c:forEach var="thisEmployee" items="${sessionSet}">
+							<h3 class="z-depth-3">EMPLOYEES IN MAIL LIST:</h3>
 
 
 
+							<table class="striped" class="z-depth-3">
 
+								<thead>
 
-
-
-
-
-
-
-								<table border="1">
 									<tr>
-										<th>Number</th>
-										<th>First Name</th>
-										<th>Last Name</th>
-										<th>Company</th>
+										<th data-field="id">Number</th>
+										<th data-field="fn">First Name</th>
+										<th data-field="ln">Last Name</th>
+										<th data-field="co">Company</th>
+										<th data-field="web">Web Adress</th>
 
 									</tr>
-									<tr>
+
+								</thead>
 
 
 
-										<td>${thisEmployee.number}</td>
-										<td>${thisEmployee.fname}</td>
-										<td>${thisEmployee.lname}</td>
-										<td>${thisEmployee.company.cName}</td>
-
-									</tr>
-								</table>
-
-
-							</c:forEach>
 
 
 
+
+								<c:forEach var="thisEmployee" items="${sessionSet}">
+
+
+
+
+									<tbody>
+										<tr>
+
+
+
+											<td>${thisEmployee.number}</td>
+											<td>${thisEmployee.fname}</td>
+											<td>${thisEmployee.lname}</td>
+											<td>${thisEmployee.company.cName}</td>
+											<td>${thisEmployee.company.web}</td>
+
+										</tr>
+									</tbody>
+
+
+
+								</c:forEach>
+
+
+							</table>
 
 							<br>
 
@@ -728,37 +767,38 @@
 							<c:choose>
 								<c:when test="${error == null}">
 
+									<h3 class="z-depth-3">UPDATE EMPLOYEE:
+										#${sessionEmployee.number}</h3>
+
+									<form action="UpdateEmployeesData.do" method="POST" >
 
 
-									<form action="UpdateEmployeesData.do" method="POST">
-										<h2>Update Employee: ${sessionEmployee.number}</h2>
-
-										First Name:<input type="text" name="fname"
-											value="${sessionEmployee.fname}" /> Last Name:<input
+										    FIRST NAME:<input id = "field" type="text" name="fname"
+											value="${sessionEmployee.fname}" /> 
+											LAST NAME:<input  id = "field"
 											type="text" name="lname" value="${sessionEmployee.lname}" />
-										Home Phone:<input type="text" name="homephone"
-											value="${sessionEmployee.contact.homePhone}" /> Cell Phone:<input
+										    HOME PHONE:<input id = "field" type="text" name="homephone"
+											value="${sessionEmployee.contact.homePhone}" /> CELL PHONE:<input id = "field"
 											type="text" name="cellphone"
-											value="${sessionEmployee.contact.cellPhone}" /> Email:<input
+											value="${sessionEmployee.contact.cellPhone}" /> EMAIL:<input id = "field"
 											type="text" name="email"
-											value="${sessionEmployee.contact.email}" /> Company Name:<input
+											value="${sessionEmployee.contact.email}" /> COMPANY NAME:<input id = "field"
 											type="text" name="cname"
-											value="${sessionEmployee.company.cName}" /> Company Address:<input
+											value="${sessionEmployee.company.cName}" /> COMPANY ADDRESS:<input id = "field"
 											type="text" name="address"
-											value="${sessionEmployee.company.address}" /> Company City:<input
+											value="${sessionEmployee.company.address}" /> COMPANY CITY:<input id = "field"
 											type="text" name="city"
-											value="${sessionEmployee.company.city}" /> Company County:<input
+											value="${sessionEmployee.company.city}" /> COMPANY COUNTY:<input id = "field"
 											type="text" name="county"
-											value="${sessionEmployee.company.county}" /> Company State:<input
+											value="${sessionEmployee.company.county}" /> COMPANY SSTATE:<input id = "field"
 											type="text" name="state"
-											value="${sessionEmployee.company.state}" /> Company Zip:<input
+											value="${sessionEmployee.company.state}" /> COMPANY ZIP:<input id = "field"
 											type="text" name="zip" value="${sessionEmployee.company.zip}" />
-										Company Web:<input type="text" name="web"
+										COMPANY WEB:<input id = "field" type="text" name="web"
 											value="${sessionEmployee.company.web}" />
 
 
-										<!-- input
-										type="submit" value="Update Employee" /> -->
+
 
 										<button class="btn waves-effect waves-light deep-purple"
 											type="submit" name="send">
@@ -768,7 +808,70 @@
 
 									</form>
 
-									<br>
+
+									<!-- input
+										type="submit" value="Update Employee" /> -->
+
+
+									<%-- 	<div class="row">
+											<form class="col s12" action="UpdateEmployeesData.do" method="POST">
+												<div class="row">
+													<div class="input-field col s6">
+														<input placeholder="John" id="first_name" 
+															type="text" name="fname" value="${sessionEmployee.fname}" class="validate"> 
+															
+															<label for="first_name">First Name</label>
+													</div>
+													
+													
+													<div class="input-field col s6">
+														<input id="last_name" type="text" name="lname" value="${sessionEmployee.lname}" class="validate">
+														<label for="last_name">Last Name</label>
+													</div>
+												
+													<div class="input-field col s6">
+														<input id="last_name" type="text" name="lname" value="${sessionEmployee.lname}" class="validate">
+														<label for="last_name">Last Name</label>
+													</div>
+												</div>
+												<div class="row">
+													<div class="input-field col s12">
+														<input id="password" type="password" class="validate">
+														<label for="password">Password</label>
+													</div>
+												</div>
+												<div class="row">
+													<div class="input-field col s12">
+														<input id="email" type="email" class="validate"> <label
+															for="email">Email</label>
+													</div>
+												</div>
+											</form>
+										</div> --%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -157,7 +157,7 @@ public class EmployeesController {
 
 			mv.addObject("tableChoice", "three");
 
-			mv.addObject("error", "Employee Not Found");
+			mv.addObject("error", "EMPLOYEE NOT FOUND");
 		}
 
 		return mv;
@@ -192,7 +192,7 @@ public class EmployeesController {
 
 			mv.addObject("tableChoice", "three");
 
-			mv.addObject("error", "Employee not Found");
+			mv.addObject("error", "EMPLOYEE NOT FOUND");
 		}
 
 		return mv;
@@ -227,7 +227,7 @@ public class EmployeesController {
 
 			mv.addObject("tableChoice", "three");
 
-			mv.addObject("error", "Employee not Found");
+			mv.addObject("error", "EMPLOYEE NOT FOUND");
 		}
 
 		return mv;
@@ -390,7 +390,7 @@ public class EmployeesController {
 
 		mv.addObject("tableChoice", "three");
 
-		mv.addObject("error", "Employee Deleted");
+		mv.addObject("error", "EMPLOYEE DELETED");
 		
 		
 		
@@ -427,9 +427,9 @@ public class EmployeesController {
 
 			mv.setViewName("select.jsp");
 
-			mv.addObject("tableChoice", "four");
+			mv.addObject("tableChoice", "three");
 
-			mv.addObject("error", "Employee not Found");
+			mv.addObject("error", "EMPLOYEE NOT FOUND");
 			return mv;
 		}
 
